@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (C) 2013-2014, Fate Studio. All rights reserved.
 
 #pragma once
 
@@ -12,7 +12,6 @@ UCLASS()
 class DEJAVU_API ADejaVuGameMode : public AGameMode
 {
 	GENERATED_UCLASS_BODY()
-
 	
-	
+	virtual void BeginPlay() override;
 };
