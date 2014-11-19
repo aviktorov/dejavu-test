@@ -26,24 +26,22 @@ ADejaVuPawn::ADejaVuPawn(const class FPostConstructInitializeProperties& PCIP) :
 	camera = PCIP.CreateDefaultSubobject<UCameraComponent>(this, TEXT("OrthoCamera"));
 	camera->AttachParent = mesh;
 	camera->ProjectionMode = ECameraProjectionMode::Orthographic;
+	camera->SetAbsolute(false, true);
 	
 	RootComponent = mesh;
 }
 
 void ADejaVuPawn::Tick(float deltaTime)
 {
+	Super::Tick(deltaTime);
 	const FVector &position_camera = FVector
 	(
-		FMath::Cos(FMath::DegreesToRadians(theta)) * FMath::Cos(FMath::DegreesToRadians(phi)),
-		FMath::Cos(FMath::DegreesToRadians(theta)) * FMath::Sin(FMath::DegreesToRadians(phi)),
-		FMath::Sin(FMath::DegreesToRadians(theta))
-	) * radius;
+		radius * FMath::Cos(FMath::DegreesToRadians(theta)) * FMath::Cos(FMath::DegreesToRadians(phi)),
+		radius * FMath::Cos(FMath::DegreesToRadians(theta)) * FMath::Sin(FMath::DegreesToRadians(phi)),
+		radius * FMath::Sin(FMath::DegreesToRadians(theta))
+	);
 	
-	const FVector &position_mesh = mesh->GetRelativeTransform().GetLocation();
-	const FRotator &orientation_camera = FLookAtMatrix(position_camera, position_mesh, FVector::UpVector).Rotator();
-	
-	camera->SetWorldRotation(orientation_camera);
-	camera->SetRelativeLocation(position_camera);
+	camera->SetRelativeLocationAndRotation(position_camera + FVector::UpVector * this->BaseEyeHeight, (-position_camera).Rotation());
 }
 
 void ADejaVuPawn::BeginPlay()

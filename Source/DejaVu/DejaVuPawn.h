@@ -18,23 +18,23 @@ class DEJAVU_API ADejaVuPawn : public APawn
 	
 public:
 	
-	UPROPERTY(Category = Camera, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, EditAnywhere, BlueprintReadWrite)
 	float radius;
 	
-	UPROPERTY(Category = Camera, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, EditAnywhere, BlueprintReadWrite)
 	float theta;
 	
-	UPROPERTY(Category = Camera, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, EditAnywhere, BlueprintReadWrite)
 	float phi;
 	
 protected:
 	
-	UPROPERTY(Category = Cube, VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
 	TSubobjectPtr<UStaticMeshComponent> mesh;
 	
-	UPROPERTY(Category = Cube, BlueprintReadOnly)
+	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
 	TSubobjectPtr<UPhysicsConstraintComponent> constraint;
 	
-	UPROPERTY(Category = Cube, BlueprintReadOnly)
+	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
 	TSubobjectPtr<UCameraComponent> camera;
 };
