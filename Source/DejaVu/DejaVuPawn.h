@@ -14,16 +14,17 @@ class DEJAVU_API ADejaVuPawn : public APawn
 	GENERATED_UCLASS_BODY()
 	
 	virtual void BeginPlay() override;
+	virtual void Tick(float deltaTime) override;
 	
 public:
 	
-	UPROPERTY(Category = Cube, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, BlueprintReadWrite)
 	float radius;
 	
-	UPROPERTY(Category = Cube, BlueprintReadWrite)
-	float alpha;
+	UPROPERTY(Category = Camera, BlueprintReadWrite)
+	float theta;
 	
-	UPROPERTY(Category = Cube, BlueprintReadWrite)
+	UPROPERTY(Category = Camera, BlueprintReadWrite)
 	float phi;
 	
 protected:
