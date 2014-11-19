@@ -42,14 +42,9 @@ void ADejaVuPawn::Tick(float deltaTime)
 	);
 	
 	camera->SetRelativeLocationAndRotation(position_camera + FVector::UpVector * this->BaseEyeHeight, (-position_camera).Rotation());
-}
-
-void ADejaVuPawn::BeginPlay()
-{
-	Super::BeginPlay();
 	
-	if(GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("We are using DejaVu character!"));
-	}
+	const FVector &movement = this->ConsumeMovementInputVector();
+	const FVector &velocity = mesh->GetPhysicsLinearVelocity();
+	
+	mesh->SetPhysicsLinearVelocity(FVector(movement.X, movement.Y, velocity.Z));
 }

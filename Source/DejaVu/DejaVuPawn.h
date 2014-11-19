@@ -13,7 +13,6 @@ class DEJAVU_API ADejaVuPawn : public APawn
 {
 	GENERATED_UCLASS_BODY()
 	
-	virtual void BeginPlay() override;
 	virtual void Tick(float deltaTime) override;
 	
 public:
