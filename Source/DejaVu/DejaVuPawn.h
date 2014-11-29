@@ -29,10 +29,13 @@ public:
 protected:
 	
 	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
-	TSubobjectPtr<UStaticMeshComponent> mesh;
+	TSubobjectPtr<UBoxComponent> collision;
 	
 	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
-	TSubobjectPtr<UPhysicsConstraintComponent> constraint;
+	TSubobjectPtr<UStaticMeshComponent> mesh;
+	
+	//UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
+	//TSubobjectPtr<UPhysicsConstraintComponent> constraint;
 	
 	UPROPERTY(Category = Cube, VisibleDefaultsOnly, BlueprintReadOnly)
 	TSubobjectPtr<UCameraComponent> camera;
